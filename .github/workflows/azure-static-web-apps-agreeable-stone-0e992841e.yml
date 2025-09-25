@@ -16,14 +16,17 @@ jobs:
         run: |
           cd frontend
           npm run build
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_STONE_0E992841E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
-          app_location: "frontend"
-          api_location: ""
-          output_location: "frontend/build"
+          
+          # --- CORRECTED SETTINGS ---
+          app_location: "frontend/build"  # Point directly to the folder with your built assets
+          api_location: ""                # Your API location, if you have one
+          output_location: ""             # No longer needed, app_location is the source of truth for assets
+          skip_app_build: true            # Crucial: This tells the action not to run its own build
+
