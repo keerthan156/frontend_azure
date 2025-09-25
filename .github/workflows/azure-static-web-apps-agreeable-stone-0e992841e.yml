@@ -25,8 +25,9 @@ jobs:
           action: "upload"
           
           # --- CORRECTED SETTINGS ---
-          app_location: "frontend/build"  # Point directly to the folder with your built assets
+          app_location: "/frontend"  # Point directly to the folder with your built assets
           api_location: ""                # Your API location, if you have one
-          output_location: ""             # No longer needed, app_location is the source of truth for assets
+          output_location: "build"             # No longer needed, app_location is the source of truth for assets
           skip_app_build: true            # Crucial: This tells the action not to run its own build
+
 
